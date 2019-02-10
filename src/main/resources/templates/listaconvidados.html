@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ListaVIP</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div id="lista-convidados">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Completo</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tr th:each="convidado : ${convidados}">
+                <td th:text="${convidado.id}"></td>
+                <td th:text="${convidado.nome}"></td>
+                <td th:text="${convidado.email}"></td>
+            </tr>
+        </table>
+        <h1>Busca convidados</h1>
+        <form action="buscar" method="post">
+            <div class="form-group">
+                <label for="busca">Nome Completo</label>
+                <input class="form-control" type="text" id="busca" name="busca" placeholder="Nome Completo">
+            </div>
+            <button class="btn btn-success" type="submit" id="buscar_nome" name="buscar_nome">Buscar</button>
+            <ul th:each="convidado : ${lista}">
+                <li th:text="${convidado.id}"></li>
+                <li th:text="${convidado.nome}"></li>
+                <li th:text="${convidado.email}"></li>
+            </ul>
+        </form>
+    </div>
+    <hr>
+    <!--
+    <form action="salvar" method="post">
+        <div class="form-group">
+            <label for="nome_convidado">Nome Completo</label>
+            <input class="form-control" type="text" id="nome_convidado" name="nome_convidado" placeholder="Nome Completo">
+        </div>
+        <div class="form-group">
+            <label for="email_convidado">Nome</label>
+            <input class="form-control" type="email" id="email_convidado" name="email_convidado"  placeholder="E-mail">
+        </div>
+        <button class="btn btn-success" type="submit">Convidar</button>
+    </form>
+    -->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
